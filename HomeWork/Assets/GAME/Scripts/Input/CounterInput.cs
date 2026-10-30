@@ -11,7 +11,7 @@ public class CounterInput : MonoBehaviour
     {
         if (Input.GetMouseButtonDown((int)_startStopInput))
         {
-            OnMouseClicked?.Invoke();
+            MouseClicked?.Invoke();
         }
     }
 
