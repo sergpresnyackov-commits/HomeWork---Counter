@@ -21,12 +21,12 @@ public class Counter : MonoBehaviour
 
     private void OnEnable()
     {
-        _counterInput.OnMouseClicked += StartStopCounter;
+        _counterInput.MouseClicked += StartStopCounter;
     }
 
     private void OnDisable()
     {
-        _counterInput.OnMouseClicked += StartStopCounter;
+        _counterInput.MouseClicked += StartStopCounter;
     }
 
     private void Awake()
