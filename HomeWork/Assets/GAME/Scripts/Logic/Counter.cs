@@ -47,11 +47,6 @@ public class Counter : MonoBehaviour
         }
     }
 
-    public void StopCounter()
-    {
-
-    }
-
     private IEnumerator StartCount(float delay)
     {
         var wait = new WaitForSeconds(delay);
