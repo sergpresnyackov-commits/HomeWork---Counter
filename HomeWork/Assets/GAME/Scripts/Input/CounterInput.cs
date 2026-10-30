@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CounterInput : MonoBehaviour
 {
-    public static event Action OnMouseClicked;
+    public event Action OnMouseClicked;
 
     [SerializeField] private MouseEnum _startStopInput;
 
@@ -17,7 +17,7 @@ public class CounterInput : MonoBehaviour
 
     enum MouseEnum
     {
-        leftMouseBtn,
-        rightMouseBtn,
+        LeftMouseBtn = 0,
+        RightMouseBtn = 1,
     }
 }

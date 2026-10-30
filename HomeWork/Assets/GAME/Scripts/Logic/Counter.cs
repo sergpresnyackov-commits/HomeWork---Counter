@@ -5,28 +5,33 @@ using UnityEngine;
 [RequireComponent(typeof(CounterInput))]
 public class Counter : MonoBehaviour
 {
-    public static event Action OnCounterStarted;
-    public static event Action OnCounterStopped;
-    public static event Action OnCounterChanged;
+    public event Action CounterStarted;
+    public event Action CounterStopped;
+    public event Action CounterChanged;
 
     [SerializeField] private float _delay;
 
     private int _value = 0;
-
     private bool _isActive = false;
 
     private Coroutine _coroutine;
+    private CounterInput _counterInput;
 
     public int Value => _value;
 
     private void OnEnable()
     {
-        CounterInput.OnMouseClicked += StartStopCounter;
+        _counterInput.OnMouseClicked += StartStopCounter;
     }
 
     private void OnDisable()
     {
-        CounterInput.OnMouseClicked += StartStopCounter;
+        _counterInput.OnMouseClicked += StartStopCounter;
+    }
+
+    private void Awake()
+    {
+        _counterInput = GetComponent<CounterInput>();
     }
 
     public void StartStopCounter()
@@ -37,19 +42,14 @@ public class Counter : MonoBehaviour
         {
             _coroutine = StartCoroutine(StartCount(_delay));
 
-            OnCounterStarted?.Invoke();
+            CounterStarted?.Invoke();
         }
         else
         {
             StopCoroutine(_coroutine);
 
-            OnCounterStopped?.Invoke();
+            CounterStopped?.Invoke();
         }
-    }
-
-    public void StopCounter()
-    {
-
     }
 
     private IEnumerator StartCount(float delay)
@@ -62,7 +62,7 @@ public class Counter : MonoBehaviour
 
             _value++;
 
-            OnCounterChanged?.Invoke();
+            CounterChanged?.Invoke();
         }
     }
 }

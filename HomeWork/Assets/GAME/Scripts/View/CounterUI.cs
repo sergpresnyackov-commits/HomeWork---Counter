@@ -11,16 +11,16 @@ public class CounterUI : MonoBehaviour
 
     private void OnEnable()
     {
-        Counter.OnCounterStarted += ActivateText;
-        Counter.OnCounterStopped += StopText;
-        Counter.OnCounterChanged += UpdateText;
+        _counter.CounterStarted += ActivateText;
+        _counter.CounterStopped += StopText;
+        _counter.CounterChanged += UpdateText;
     }
 
     private void OnDisable()
     {
-        Counter.OnCounterStarted -= ActivateText;
-        Counter.OnCounterStopped -= StopText;
-        Counter.OnCounterChanged -= UpdateText;
+        _counter.CounterStarted -= ActivateText;
+        _counter.CounterStopped -= StopText;
+        _counter.CounterChanged -= UpdateText;
     }
 
     private void ActivateText()
